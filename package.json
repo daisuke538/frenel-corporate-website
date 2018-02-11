@@ -1,0 +1,45 @@
+{
+  "name": "frenel-corporate-website",
+  "version": "1.0.0",
+  "description": "フレネルのコーポレートサイト",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daisuke538/frenel-corporate-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daisuke538/frenel-corporate-website/issues"
+  },
+  "homepage": "https://github.com/daisuke538/frenel-corporate-website#readme",
+  "devDependencies": {
+    "event-stream": "^3.3.4",
+    "glob-all": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-filelog": "^0.4.1",
+    "gulp-group-css-media-queries": "^1.2.1",
+    "gulp-image-resize": "^0.13.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-imageoptim": "^1.0.9",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-gifsicle": "^5.2.0",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^5.0.1"
+  }
+}

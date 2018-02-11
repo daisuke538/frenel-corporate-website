@@ -1,3 +1,15 @@
-baseURL = "http://example.org/"
+baseURL = "https://frenel.jp/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "FRENEL, LLC.（合同会社フレネル）公式サイト"
+
+ignoreFiles = [ "\\.scss"]
+
+[Params]
+  stylesheet = "style.css"
+  description = "FRENEL（フレネル）は、九州アジアを拠点とするクリエイターエージェンシー企業です。Webディレクションなども行っています。"
+  analytics = ""
+
+[Social]
+  twitter = ""
+
+[permalinks]

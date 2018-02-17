@@ -1,7 +1,116 @@
 {{ partial "home_header.html" . }}
 
-<main>
+{{ partial "home_nav.html" . }}
 
+<main class="wrapper">
+  <div class="hero" id="scroll-top">
+    <img src="" alt="" />
+  </div>
+
+  <div class="news" id="news">
+    <h2 class="display-effect">NEWS</h2>
+    <div class="news-box display-effect">
+      <section class="article-list">
+      {{ range (.Paginator 5).Pages }}
+        {{ .Render "list" }}
+      {{ end }}
+      </section>
+      <div class="article-list_view-all-button">
+        <a href="#" class="article-list_view-all-text">VIEW ALL</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="vision" id="vision">
+    <h2 class="display-effect">VISION</h2>
+    <div class="vision-box display-effect">
+      <div class="vision-box_title">はじまりを、あと押しする。</div>
+      <div class="vision-box_description">
+        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
+        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
+        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
+      </div>
+    </div>
+  </div>
+
+  <div class="services" id="services">
+    <h2 class="display-effect">SERVICES</h2>
+    <div class="services-box display-effect">
+      <div class="services-box_card">
+        <div class="services-box_card-logo">
+          <a href="#"><img src="" /></a>
+        </div>
+        <div class="plus-sign"></div>
+        <div class="services-box_card-description">
+          <div class="services-box_card-description-text">
+            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。
+            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明
+          </div>
+        </div>
+      </div>
+      <div class="services-box_card">
+        <div class="services-box_card-logo">
+          <a href="#"><img src="" /></a>
+        </div>
+        <div class="plus-sign"></div>
+        <div class="services-box_card-description">
+          <div class="services-box_card-description-text">
+            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。
+            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="company" id="company">
+    <h2 class="display-effect">COMPANY</h2>
+    <div class="company-box display-effect">
+      <!-- Googleマップを挿入予定 -->
+      <dl class="company-overview">
+        <dt>社名</dt>
+        <dd>合同会社フレネル（Frenel, LLC.）</dd>
+        <dt>設立日</dt>
+        <dd>2018年3月15日</dd>
+        <dt>創業者</dt>
+        <dd>池松 拓哉 / 小宮 大輔</dd>
+        <dt>代表者</dt>
+        <dd>代表CEO 池松 拓哉</dd>
+        <dt>事業内容</dt>
+        <dd class="company-overview_business-contents">
+          <div class="company-overview_business-name">クリエイターエージェント</div>
+          <div class="company-overview_business-description">クリエイターが世界に羽ばたくためのサポートを行います。</div>
+          <div class="company-overview_business-name">Webディレクション</div>
+          <div class="company-overview_business-description">人に伝わり、事業の成功をサポートするWebサイトのディレクションを行います。</div>
+          <div class="company-overview_business-name">Webコンサルティング</div>
+          <div class="company-overview_business-description">Webサイトの問題調査や原因分析を行い、効果的な改善策を提案いたします。</div>
+          <div class="company-overview_business-name">地域デザイン / プランニング</div>
+          <div class="company-overview_business-description">地域の魅力と課題の整理を行い、住む人を一番に考えた解決プランを考案いたします。</div>
+        </dd>
+        <!--
+        <dt>所在地</dt>
+        <dd>〒xxx-xxx 福岡県福岡市</dd>
+        -->
+      </dl>
+    </div>
+  </div>
+
+  <div class="member" id="member">
+    <h2 class="display-effect">MEMBER</h2>
+    <div class="member-box display-effect">
+      {{ .Render "member" }}
+    </div>
+  </div>
+
+  <!--
+  <div class="contact">
+    <h2>CONTACT</h2>
+
+  </div>
+  -->
+  <div class="scroll-top">
+    <a href="#scroll-top"><img src="images/scroll-top-arrow.png" /></a>
+  </div>
 </main>
 
 {{ partial "footer.html" . }}

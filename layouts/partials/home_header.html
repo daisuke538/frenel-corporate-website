@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}">
   <meta name="description" content="{{ .Site.Params.Description }}">
@@ -13,6 +14,10 @@
   <meta name="twitter:site" content="@" />
   <meta name="twitter:creator" content="@foo_bar" />
   <link rel="stylesheet" href="{{ .Site.Params.Stylesheet}}">
+  <!-- inviewを使うためにjqueryを古いバージョンにしている。-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://sdk.form.run/js/v2/formrun.js"></script>
 </head>
 <body>
 <header>

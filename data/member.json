@@ -1,0 +1,20 @@
+{
+  "ikematsu": {
+    "name": "池松 拓哉",
+    "name_en": "Ikematsu Takuya",
+    "position": "代表CEO",
+    "media": {
+      "twitter": "",
+      "facebook": "https://www.facebook.com/takuya.ikematsu"
+    }
+  },
+  "komiya": {
+    "name": "小宮 大輔",
+    "name_en": "Komiya Daisuke",
+    "position": "副代表COO",
+    "media": {
+      "twitter": "https://twitter.com/daisuke1120",
+      "facebook": "https://www.facebook.com/daisuke538"
+    }
+  }
+}

@@ -6,12 +6,7 @@ var csscomb      = require( 'gulp-csscomb' ); //CSSプロパティ順序
 var autoprefixer = require( 'gulp-autoprefixer' ); // ベンダープレフィックス
 var gcmq         = require( 'gulp-group-css-media-queries' ); // CSSメディアクエリー整理
 var notify       = require( 'gulp-notify' ); // エラーを通知
-//var imageOptim   = require( 'gulp-imageoptim' ); // 画像圧縮
 var imagemin     = require( 'gulp-imagemin' ); // 画像圧縮
-//var imageminJpg  = require( 'imagemin-jpeg-recompress' ); // JPG画像圧縮
-//var imageminPng  = require( 'imagemin-pngquant' ); // PNG画像圧縮
-//var imageminGif  = require( 'imagemin-gifsicle' ); // GIF画像圧縮
-//var svgemin      = require( 'gulp-svgmin' ); // SVG画像圧縮
 var pngquant     = require( 'imagemin-pngquant' );
 var mozjpeg      = require( 'imagemin-mozjpeg' );
 var imageResize  = require( 'gulp-image-resize' );
@@ -21,16 +16,16 @@ var rename       = require( 'gulp-rename' ); // ファイルのリネーム
 var glob         = require( 'glob-all' );
 var filelog      = require( 'gulp-filelog' );
 var plumber      = require( 'gulp-plumber' );
-var eventStream  = require( 'event-stream' );
-
-var pathsCss = {
-  'scss': 'static/scss/',
-  'css': 'public/css/'
-}
+var shell        = require( 'gulp-shell' );
 
 //////////////////
 // CSSコンパイル //
 /////////////////
+var pathsCss = {
+  'scss': 'static/scss/',
+  'css': 'static/css/'
+}
+
 gulp.task( 'sass', function(){
   gulp.src( pathsCss.scss + "*scss" )
       .pipe( cached( 'sass' ) )
@@ -51,7 +46,10 @@ gulp.task( 'sass', function(){
       .pipe( autoprefixer() )
       .pipe( gcmq() )
       //.pipe( rename( 'style.css' ) )
-      .pipe( gulp.dest( pathsCss.css ) )
+      .pipe( gulp.dest( pathsCss.css ) );
+
+      console.log( 'Sassをコンパイルしました。' ) ;
+      /*
       .pipe( notify(
              {
                title: 'Sassをコンパイルしました。',
@@ -59,6 +57,7 @@ gulp.task( 'sass', function(){
                sound: 'Tink',
              }
       ) );
+      */
 });
 
 ////////////////////////////////////////
@@ -101,24 +100,16 @@ gulp.task( 'imagemin', function(){
 
 /// ここまでOK。変数被りに注意！ ///
 
+//////////////////////////////////
+// サムネイル（アイキャッチ）画像生成 //
+//////////////////////////////////
+gulp.task( 'image-resize', function() {
+  var srcThumbGlobs = glob.sync( 'content/posts/**/images/thumbnail/' );
+  var srcEyeGlobs   = glob.sync( 'content/posts/**/images/eyecatch/' );
+  var srcDir        = 'origin';
+  var targetFile    = '/*.+(jpg|jpeg|png|gif)';
 
-
-///////////////////////////
-// 記事のサムネイル画像生成 //
-//////////////////////////
-var pathsThumb = {
-  originDir: 'content/posts/**/images/thumbnail/',
-  outputDir: 'public/posts/**/images/thumbnail/',
-  prvDir : 'prv',
-  dstDir : 'prd'
-}
-
-gulp.task( 'image-resize:thumb', function() {
-  var originGlobs   = glob.sync( pathsThumb.originDir );
-  var outputGlob   = pathsThumb.outputDir;
-  var targetFile   = '*.+(jpg|jpeg|png|gif)';
-
-  var resizeOptions = {
+  var thumbResizeOptions = {
     // 記事のサムネイル画像サイズを設定
     width       : 300,
     height      : 200,
@@ -128,28 +119,45 @@ gulp.task( 'image-resize:thumb', function() {
     imageMagick : true
   };
 
-  var imageminOptions = {
-    optimizationLevel: 7
+  var eyeResizeOptions = {
+    // 記事のアイキャッチ画像サイズを設定
+    width       : 1800,
+    height      : 900,
+    gravity     : 'Center',
+    crop        : true,
+    upscale     : false,
+    imageMagick : true
   };
 
-  for( var item in originGlobs ) {
-    var originGlob = originGlobs[item] + targetFile;
-    var dstGlob    = originGlobs[item];
+  // サムネイルのリサイズ
+  for( var item in srcThumbGlobs ) {
+    var srcGlob = srcThumbGlobs[item] + srcDir + targetFile;
+    var dstGlob = srcThumbGlobs[item];
+    //console.log( srcGlob );
+    //console.log( dstGlob );
 
-    gulp.src( originGlob )
-        //.pipe( changed( dstGlob ) )
-        .pipe( imageResize( resizeOptions ) )
-        .pipe( gulp.dest( dstGlob ) )
-        .pipe( filelog() )
-        .pipe( notify({
-          title: '記事のサムネイル画像を生成しました。',
-          message: new Date(),
-          sound: 'Tink'
-        }) );
+    gulp.src( srcGlob )
+      .pipe( changed( dstGlob ) )
+      .pipe( imageResize( thumbResizeOptions ) )
+      .pipe( rename( 'thumbnail.jpg' ) )
+      .pipe( gulp.dest( dstGlob ) )
+      .pipe( filelog() );
+  }
+
+  // アイキャッチのリサイズ
+  for( var item in srcEyeGlobs ) {
+    var srcGlob = srcEyeGlobs[item] + srcDir + targetFile;
+    var dstGlob = srcEyeGlobs[item];
+
+    gulp.src( srcGlob )
+      .pipe( changed( dstGlob ) )
+      .pipe( imageResize( eyeResizeOptions ) )
+      .pipe( rename( 'eyecatch.jpg' ) )
+      .pipe( gulp.dest( dstGlob ) )
+      .pipe( filelog() );
   }
 });
 
-gulp.task( 'image-resize-thumb', ['image-resize:thumb'] );
 
 /////////////
 // デプロイ //
@@ -160,11 +168,31 @@ gulp.task( 'image-resize-thumb', ['image-resize:thumb'] );
 // 監視フォルダ //
 ////////////////
 gulp.task( 'watch', function(){
+  gulp.watch( 'static/images/origin/*', ['imagemin'] );
+  gulp.watch( 'content/posts/**/images/thumbnail/origin/*', ['image-resize'] );
+  gulp.watch( 'content/posts/**/images/eyecatch/origin/*', ['image-resize'] );
   gulp.watch( 'static/scss/*.scss', ['sass'] ); // Sassファイルに変更があると起動
-  gulp.watch( 'static/images/**/*.+(jpg|jpeg|png|gif|svg)', ['imagemin'] ); // 画像に変更があると起動
+  // gulp.watch( 'static/images/**/*.+(jpg|jpeg|png|gif|svg)', ['imagemin'] ); // 画像に変更があると起動
 });
+
+////////////////
+// Server起動 //
+///////////////
+gulp.task( 'hugo-server', shell.task([
+  'hugo server -w'
+]) );
+
+////////////////
+// Hugoビルド //
+///////////////
+gulp.task( 'hugo-build', shell.task([
+  'rm -rf ./public/*',
+  'hugo',
+  'rm -rf ./public/scss',
+  'rm -rf ./public/images/origin'
+]) );
 
 ///////////////////////////
 // gulpコマンドで動かすもの //
 //////////////////////////
-gulp.task( 'default', ['watch', 'sass', 'imagemin'] );
+gulp.task( 'default', ['sass'] );

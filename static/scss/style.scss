@@ -1,0 +1,1072 @@
+@import url( 'https://fonts.googleapis.com/earlyaccess/notosansjp.css' );
+@import url( 'https://fonts.googleapis.com/css?family=Noto+Sans' );
+@import url( 'https://fonts.googleapis.com/css?family=Quicksand' );
+
+@font-face {
+  font-family: 'futura';
+  src: url( '../fonts/futura/Futura-Med.otf' ) format( 'otf' );
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'futura';
+  src: url( '../fonts/futura/Futura-Boo.otf' ) format( 'otf' );
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'futura';
+  src: url( '../fonts/futura/Futura-Lig.otf' ) format( 'otf' );
+  font-weight: 100;
+  font-style: normal;
+}
+
+@mixin max-screen( $breakpoint ) {
+  @media screen and ( max-width: $breakpoint ) {
+    @content;
+  }
+}
+
+@mixin min-screen( $breakpoint ) {
+  @media screen and ( min-width: $breakpoint ) {
+    @content;
+  }
+}
+
+@mixin screen( $breakpoint-min, $breakpoint-max ) {
+  @media screen and ( min-width: $breakpoint-min ) and ( max-width: $breakpoint-max ) {
+    @content;
+  }
+}
+
+@mixin view-all-colors( $view-all-color ) {
+  color: $view-all-color;
+  text-decoration: none;
+}
+
+@mixin link-colors( $link-color ) {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten( $link-color, 15% );
+  }
+
+  &:visited {
+    color: desaturate( $link-color, 50% );
+  }
+}
+
+$base-font: 'futura', 'Noto Sans', 'Quicksand', 'Noto Sans JP', sans-serif;
+$breakpoint-tablet: 980px;
+$breakpoint-mobile: 680px;
+$black-color: #5F5F5F;
+$white-color: #FFFFFF;
+$background-gray-color: #F0F0F0;
+$corporate-color: #00aacc;
+//$corporate-sub-color: #c2d88c;
+$corporate-sub-color: #FF6088;
+$box-width-pc: 860px;
+$box-width-tablet: 680px;
+$box-width-mobile: 80%;
+
+body {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: $base_font;
+  font-size: 16px;
+  color: $black-color;
+  overflow-x: hidden;
+}
+
+img{
+	margin: 0;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+//////////////
+// home nav //
+//////////////
+.home-nav {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  z-index: 20;
+  //border: 1px solid;
+
+  @include max-screen( $breakpoint-tablet ) {
+    height: 50px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    height: auto;
+  }
+}
+
+.home-nav_logo {
+  float: left;
+  margin-left: 30px;
+
+  @include max-screen( $breakpoint-mobile ) {
+    float: none;
+    margin-left: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  img {
+
+  }
+}
+
+////////////////////////////
+// SP用ナビゲーションメニュー //
+////////////////////////////
+.home-nav_menu {
+  display: none;
+
+  @include max-screen( $breakpoint-tablet ) {
+
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    display: block;
+    position: fixed;
+    top: 18px;
+    right: 16px;
+    z-index: 30;
+  }
+}
+
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+
+.menu-trigger {
+  position: relative;
+  width: 40px;
+  height: 32px;
+}
+
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.menu-trigger span:nth-of-type( 1 ) {
+  top: 0;
+}
+
+.menu-trigger span:nth-of-type( 2 ) {
+  top: 14px;
+}
+
+.menu-trigger span:nth-of-type( 3 ) {
+  bottom: 0;
+}
+
+.menu-trigger.active span:nth-of-type( 1 ) {
+  transform: translateY( 14px ) rotate( -45deg );
+}
+.menu-trigger.active span:nth-of-type( 2 ) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-of-type( 3 ) {
+  transform: translateY( -14px ) rotate( 45deg );
+}
+
+.home-nav_menu-text {
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: 2px;
+    margin-left: 2px;
+    color: $white-color;
+    font-size: 0.6em;
+    text-align: center;
+    letter-spacing: 3px;
+  }
+}
+
+.home-nav-sp {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba( 0, 0, 0, 0.4 );
+  z-index: 20;
+  //border: 1px solid;
+}
+
+.home-nav-sp_nav-list {
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 0;
+  width: 80%;
+  max-width: 80%;
+  font-size: 1.2em;
+  list-style: none;
+  //border: 1px solid;
+
+  li {
+    margin-bottom: 20px;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    //border: 1px solid;
+
+    a {
+      color: $white-color;
+      font-family: 'futura';
+      font-weight: 100;
+      text-decoration: none;
+    }
+  }
+}
+
+.home-nav-sp_logo {
+  margin: 0 auto;
+  max-width: 80%;
+  height: 100px;
+  text-align: center;
+  //border: 1px solid;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+///////////////////////////////////
+// PC/Tablet用ナビゲーションメニュー //
+///////////////////////////////////
+.home-nav_nav-list {
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  margin-top: 22px;
+  margin-right: 30px;
+  width: 400px;
+  font-size: 0.9em;
+  list-style: none;
+  //border: 1px solid;
+
+  @include max-screen( $breakpoint-tablet ) {
+    //margin-top: 18px;
+    margin-right: 28px;
+    width: 360px;
+    font-size: 0.8em;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    display: none;
+  }
+
+  li {
+    padding: 0;
+    text-align: center;
+    //border: 1px solid;
+
+    a {
+      color: $white-color;
+      font-family: 'futura';
+      font-weight: 100;
+      text-decoration: none;
+    }
+  }
+}
+
+///////////////////
+// スクロールトップ //
+///////////////////
+.scroll-top {
+  display: none;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: $corporate-color;
+  z-index: 30;
+
+  @include max-screen( $breakpoint-mobile ) {
+    right: 14px;
+    bottom: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  a {
+    display: block;
+    width: 50px;
+    height: 50px;
+
+    @include max-screen( $breakpoint-mobile ) {
+      width: 40px;
+      height: 40px;
+    }
+
+    img {
+      margin-top: 8px;
+      margin-left: 8px;
+      width: 34px;
+      height: 34px;
+
+      @include max-screen( $breakpoint-mobile ) {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.scroll-top:hover {
+  opacity: 0.7;
+  transition: 0.7s;
+}
+
+.display-effect {
+  opacity: 0;
+	transform: translate( 0, 70px );
+  transition : all 1000ms;
+}
+
+.display-effect_scrollin {
+  opacity: 1.0;
+	transform: translate( 0, 0 );
+}
+
+////////////////
+// トップページ //
+////////////////
+.wrapper {
+  width: 100%;
+
+  h2 {
+    display: inline-block;
+    margin: 60px auto;
+    padding: 0;
+    width: 100%;
+    color: #262025;
+    font-family: 'futura';
+    font-size: 2.0em;
+    font-weight: 500;
+    text-align: center;
+
+    @include max-screen( $breakpoint-mobile ) {
+      margin: 40px auto;
+      font-size: 1.5em;
+    }
+  }
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient( 180deg, $corporate-color, $corporate-sub-color );
+  background-size: 400% 400%;
+  animation: gradationHero 8s ease infinite;
+}
+
+@keyframes gradationHero {
+    0%{ background-position:50% 0% }
+    50%{ background-position:50% 100% }
+    100%{ background-position:50% 0% }
+}
+
+//////////
+// NEWS //
+//////////
+.news {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80px;
+  text-align: center;
+  background-color: #F0F0F0;
+
+  @include max-screen( $breakpoint-mobile ) {
+    padding-bottom: 60px;
+  }
+}
+
+.news-box {
+  margin: 0 auto;
+  width: $box-width-pc;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: $box-width-mobile;
+  }
+}
+
+.article-list {
+  width: 100%;
+  text-align: left;
+
+}
+
+.article-list_media {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.article-list_thumbnail {
+  margin: 0;
+  padding: 0;
+
+  img {
+    width: 150px;
+    height: 100px;
+
+    @include max-screen( $breakpoint-tablet ) {
+
+    }
+
+    @include max-screen( $breakpoint-mobile ) {
+      width: 75px;
+      height: 50px;
+    }
+  }
+}
+
+.article-list_text-block {
+  margin-left: 26px;
+  width: 100%;
+
+  @include max-screen( $breakpoint-tablet ) {
+
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-left: 14px;
+  }
+
+  hr {
+    width: 100%;
+    height: 1px;
+    text-align: left;
+    background-color: #C2C2C2;
+    border: none;
+
+    @include max-screen( $breakpoint-mobile ) {
+      margin: 4px 0;
+    }
+  }
+}
+
+.article-list_text-block-date {
+  font-size: 0.8em;
+
+  @include max-screen( $breakpoint-tablet ) {
+
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    font-size: 0.5em;
+  }
+}
+
+.article-list_text-block-title {
+  font-family: 'Noto Sans JP';
+  font-size: 0.9em;
+  font-weight: 700;
+
+  @include max-screen( $breakpoint-tablet ) {
+    font-size: 0.8em;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    font-size: 0.65em;
+  }
+}
+
+.article-list_text-block-title-link {
+  color: $black-color;
+  text-decoration: none;
+}
+
+.article-list_view-all-button {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 200px;
+  height: 40px;
+  line-height: 43px;
+  color: $corporate-color;
+  text-align: center;
+  border: 3px $corporate-color solid;
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: 30px;
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    border: 2px $corporate-color solid;
+  }
+}
+
+.article-list_view-all-text {
+  display: inline-block;
+  width: 100%;
+  @include view-all-colors( $corporate-color );
+
+  @include max-screen( $breakpoint-mobile ) {
+    font-size: 0.7em;
+  }
+}
+
+.vision {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  background-color: #000;
+  background-image: url( '../images/vision.jpg' );
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @include max-screen( $breakpoint-mobile ) {
+    height: 450px;
+  }
+
+  h2 {
+    color: $corporate-color;
+  }
+}
+
+.vision::before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  background-color: rgba( 0,0,0,0.6 );
+	content: ' ';
+}
+
+.vision-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: $box-width-pc;
+  color: $white-color;
+  font-family: 'Noto Sans JP';
+  text-align: center;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: $box-width-mobile;
+  }
+}
+
+.vision-box_title {
+  margin: 0 auto;
+  font-size: 1.8em;
+  font-weight: 300;
+
+  @include max-screen( $breakpoint-mobile ) {
+    font-size: 1.2em;
+  }
+}
+
+.vision-box_description {
+  margin: 0 auto;
+  margin-top: 60px;
+  line-height: 30px;
+  font-weight: 200;
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: 40px;
+    line-height: 26px;
+    font-size: 0.7em;
+  }
+}
+
+.services {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80px;
+  text-align: center;
+  background-color: #F0F0F0;
+
+  @include max-screen( $breakpoint-mobile ) {
+    padding-bottom: 60px;
+  }
+}
+
+.services-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: $box-width-pc;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    flex-wrap: wrap;
+    width: $box-width-mobile;
+  }
+}
+
+.services-box_card {
+  width: 400px;
+  height: auto;
+  box-shadow: -4px 6px 16px 4px #ddd;
+  background-color: #fff;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: 320px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: 100%;
+  }
+}
+
+.services-box_card-logo {
+  position: relative;
+  width: 100%;
+  height: 230px;
+
+  @include max-screen( $breakpoint-tablet ) {
+    height: 200px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    height: 200px;
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.services-box_card-description {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  background-color: #262025;
+
+  @include max-screen( $breakpoint-tablet ) {
+    height: 120px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    height: 120px;
+  }
+}
+
+.services-box_card-description-text {
+  position: absolute;
+  top: 27px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 83%;
+  height: 76px;
+  line-height: 20px;
+  color: #ddd;
+  font-size: 0.7em;
+  font-weight: 300;
+  text-align: left;
+  //border: 1px solid;
+
+  @include max-screen( $breakpoint-tablet ) {
+    top: 22px;
+    height: 77px;
+    line-height: 16px;
+    //border: 1px solid;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    top: 22px;
+    height: 77px;
+    line-height: 16px;
+    font-size: 0.6em;
+    //border: 1px solid;
+  }
+}
+
+.plus-sign {
+	position: relative;
+  top: -4%;
+  right: -90%;
+	width: 0.4em;
+	height: 1.6em;
+  font-size: 22px;
+	background-color: $corporate-color;
+  z-index: 10;
+
+  @include max-screen( $breakpoint-tablet ) {
+    top: -5%;
+    right: -89%;
+    font-size: 20px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    right: -90%;
+    font-size: 18px;
+  }
+}
+
+.plus-sign::before {
+	position: absolute;
+	top: 0.6em;
+	left: -0.6em;
+	width: 1.6em;
+	height: 0.4em;
+	content: "";
+	background-color: $corporate-color;
+
+  @include max-screen( $breakpoint-mobile ) {
+
+  }
+}
+
+.company {
+  margin-bottom: 80px;
+  width: 100%;
+  height: 600px;
+  font-family: 'Noto Sans';
+  text-align: center;
+
+  @include max-screen( $breakpoint-mobile ) {
+    height: 500px;
+  }
+}
+
+.company-box {
+  margin: 0 auto;
+  width: $box-width-pc;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: $box-width-mobile;
+  }
+}
+
+.company-overview {
+  width: 100%;
+
+  dt {
+    display: block;
+    float: left;
+    clear: both;
+    margin-right: 10px;
+    line-height: 3.0em;
+    text-align: left;
+
+    @include max-screen( $breakpoint-mobile ) {
+      margin-right: 0;
+      font-size: 0.7em;
+    }
+  }
+
+  dd {
+    display: block;
+    float: right;
+    width: 60%;
+    line-height: 2.9em;
+    text-align: right;
+
+    @include max-screen( $breakpoint-mobile ) {
+      font-size: 0.7em;
+    }
+  }
+}
+
+.company-overview_business-contents {
+  margin-top: 14px;
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: 10px;
+  }
+}
+
+.company-overview_business-name {
+  line-height: 18px;
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: -2px;
+  }
+}
+
+.company-overview_business-description {
+  margin-top: 5px;
+  margin-bottom: 12px;
+  line-height: 18px;
+  font-size: 0.7em;
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin-top: 1px;
+    line-height: 14px;
+    font-size: 0.2;
+  }
+}
+
+.member {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80px;
+  text-align: center;
+  background-color: #F0F0F0;
+}
+
+.member-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: $box-width-pc;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: $box-width-mobile;
+  }
+}
+
+.member-box_card {
+  margin-bottom: 4px;
+  width: calc( #{$box-width-pc} / 2 );
+  height: 200px;
+  background-color: $corporate-color;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: calc( #{$box-width-tablet} / 2 );
+    height: 150px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+.member-box_card-profile-photo {
+  float: left;
+  clear: both;
+  width: 200px;
+  height: 200px;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: 150px;
+    height: 150px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.member-box_card-profile-text {
+  float: left;
+  color: $white-color;
+  text-align: left;
+}
+
+.member-box_card-profile-name {
+  margin: 22px 0 0 32px;
+  width: 100%;
+  font-family: 'Noto Sans JP';
+  font-size: 0.9em;
+  font-weight: 300;
+
+  @include max-screen( $breakpoint-tablet ) {
+    margin: 16px 0 0 24px;
+    font-size: 0.8em;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin: 14px 0 0 20px;
+    font-size: 0.8em;
+  }
+}
+
+.member-box_card-profile-name-en {
+  margin: 3px 0 0 32px;
+  width: 100%;
+  font-family: 'Noto Sans';
+  font-size: 0.8em;
+  font-weight: 100;
+
+  @include max-screen( $breakpoint-tablet ) {
+    margin: 3px 0 0 24px;
+    font-size: 0.7em;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin: 2px 0 0 20px;
+    font-size: 0.6em;
+  }
+}
+
+.member-box_card-profile-position {
+  margin: 10px 0 0 32px;
+  width: 100%;
+  font-family: 'Noto Sans JP', 'Noto Sans';
+  font-size: 0.8em;
+  font-weight: 300;
+
+  @include max-screen( $breakpoint-tablet ) {
+    margin: 8px 0 0 24px;
+    font-size: 0.7em;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin: 5px 0 0 20px;
+    font-size: 0.7em;
+  }
+}
+
+.member-box_card-profile-media {
+  display: flex;
+  margin: 14px 0 0 32px;
+  width: 100%;
+
+  @include max-screen( $breakpoint-tablet ) {
+    margin: 10px 0 0 24px;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    margin: 5px 0 0 20px;
+  }
+}
+
+.member-box_card-profile-media-icon {
+  margin-right: 6px;
+
+  img {
+    width: 23px;
+    height: 23px;
+
+    @include max-screen( $breakpoint-tablet ) {
+      width: 18px;
+      height: 18px;
+    }
+
+    @include max-screen( $breakpoint-mobile ) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.contact {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  color: $white-color;
+  font-family: 'Noto Sans', 'Noto Sans JP';
+  font-size: 0.7em;
+  font-weight: 300;
+  background-color: #262025;
+}
+
+.footer-box {
+  margin: 0 auto;
+  width: $box-width-pc;
+
+  @include max-screen( $breakpoint-tablet ) {
+    width: $box-width-tablet;
+  }
+
+  @include max-screen( $breakpoint-mobile ) {
+    width: $box-width-mobile;
+  }
+}
+
+.footer-box_logo {
+  float: left;
+  clear: both;
+  margin-top: 16px;
+  width: 100px;
+  height: 56px;
+  border: 1px solid;
+}
+
+.footer-box_nav {
+  float: right;
+  margin-top: 16px;
+  width: calc( 100% - 150px );
+  height: 56px;
+  text-align: right;
+  //border: 1px solid;
+}
+
+.footer-box_nav-sns {
+  font-size: 1.1em;
+
+  a {
+    color: $white-color;
+    text-decoration: none;
+  }
+}
+
+.footer-box_nav-contact-form-link {
+  margin-top: 6px;
+
+  a {
+    color: $corporate-color;
+    text-decoration: none;
+  }
+}
+
+.footer-box_nav-copyright {
+  display: inline-block;
+  margin-top: 5px;
+  width: 100%;
+  height: 14px;
+  //border: 1px solid;
+}

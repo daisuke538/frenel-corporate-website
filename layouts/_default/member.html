@@ -1,0 +1,24 @@
+{{ range .Site.Data.member }}
+<div class="member-box_card">
+  <img src="images/komiya.jpg" class="member-box_card-profile-photo" alt="" />
+  <div class="member-box_card-profile-text">
+    <div class="member-box_card-profile-name">
+      {{ .name }}
+    </div>
+    <div class="member-box_card-profile-name-en">
+      {{ .name_en }}
+    </div>
+    <div class="member-box_card-profile-position">
+      {{ .position }}
+    </div>
+    <div class="member-box_card-profile-media">
+      <a href="{{ .media.twitter }}" target="_blank" class="member-box_card-profile-media-icon">
+        <img src="images/twitter-icon@2x.png" alt="" />
+      </a>
+      <a href="{{ .media.facebook }}" target="_blank" class="member-box_card-profile-media-icon">
+        <img src="images/facebook-icon@2x.png" alt="" />
+      </a>
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -46,12 +46,12 @@ $ hugo server -w
 - `content`フォルダ -> `news`フォルダに、作成したい記事のフォルダを作成する。
 
 `web-dr-another-history`を例にすると<br>
-`web-dr-another-history`<br>
-∟`images` 表示したい画像を置く。<br>
-  ∟`eyecatch` 記事ページのhero画像を置く。画像のファイル名は`eyecatch.jpg`、画像サイズは3:1にする。<br>
-  ∟`thumbnail` トップページや記事一覧のサムネイル画像を置く。画像のファイル名は`thumbnail.jpg`、画像サイズは3:2にする。<br>
-  ∟画像データ 記事内で表示したい画像を置く。`index.md`内で画像を指定する。<br>
-∟`index.md` マークダウン形式で本文を書く。<br>
+<p>`web-dr-another-history`</p>
+<p>∟`images` 表示したい画像を置く。</p>
+<p>  ∟`eyecatch` 記事ページのhero画像を置く。画像のファイル名は`eyecatch.jpg`、画像サイズは3:1にする。</p>
+<p>  ∟`thumbnail` トップページや記事一覧のサムネイル画像を置く。画像のファイル名は`thumbnail.jpg`、画像サイズは3:2にする。</p>
+<p>  ∟画像データ 記事内で表示したい画像を置く。`index.md`内で画像を指定する。</p>
+<p>∟`index.md` マークダウン形式で本文を書く。</p>
 
 ## メンバーリスト更新（トップページ）
 

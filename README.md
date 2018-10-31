@@ -16,16 +16,24 @@ $ cd ~/
 $ git clone https://github.com/frenel-llc/frenel-corporate-website.git
 ```
 
-- 以下のコマンドを実行して、上の操作で作成されたディレクトリ（frenel-corporate-website）へ移動する。
+- 上の操作で作成されたディレクトリ（frenel-corporate-website）へ移動する。
 ```sh
 $ cd frenel-corporate-website
 ```
 
-- 以下のコマンドを実行して、Hugoをインストールする。
+- Hugoをインストールする。
 ```sh
 $ brew update
 $ brew install hugo
 ```
+
+- `package.json` の情報（ライブラリ）をインストールする。
+
+```sh
+$ npm install
+```
+
+
 
 
 

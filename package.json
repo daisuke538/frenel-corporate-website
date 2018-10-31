@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daisuke538/frenel-corporate-website.git"
+    "url": "git+https://github.com/frenel-llc/frenel-corporate-website.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/daisuke538/frenel-corporate-website/issues"
+    "url": "https://github.com/frenel-llc/frenel-corporate-website/issues"
   },
-  "homepage": "https://github.com/daisuke538/frenel-corporate-website#readme",
+  "homepage": "https://github.com/frenel-llc/frenel-corporate-website#readme",
   "devDependencies": {
     "event-stream": "^3.3.4",
     "glob-all": "^3.1.0",

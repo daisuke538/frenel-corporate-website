@@ -8,23 +8,23 @@
 
 - 作業したいディレクトリまで移動する。多いのはホームディレクトリ（Macの場合は /Users/ユーザー名）。以下のコマンドを実行して、ホームディレクトリへ移動する。
 ```sh
-cd ~/
+$ cd ~/
 ```
 
 - Githubからリポジトリをローカルにクローン（複製）する。ホームディレクトリで以下のコマンドを実行する。
 ```sh
-git clone https://github.com/frenel-llc/frenel-corporate-website.git
+$ git clone https://github.com/frenel-llc/frenel-corporate-website.git
 ```
 
 - 以下のコマンドを実行して、上の操作で作成されたディレクトリ（frenel-corporate-website）へ移動する。
 ```sh
-cd frenel-corporate-website
+$ cd frenel-corporate-website
 ```
 
 - 以下のコマンドを実行して、Hugoをインストールする。
 ```sh
-brew update
-brew install hugo
+$ brew update
+$ brew install hugo
 ```
 
 

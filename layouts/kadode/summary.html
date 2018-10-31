@@ -1,0 +1,14 @@
+<div class="article-list_media">
+  <figure class="article-list_thumbnail">
+    <a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}{{ .Params.Thumbnail }}" alt="" /></a>
+  </figure>
+  <div class="article-list_text-block">
+    <div class="article-list_text-block-date">
+      {{ .Date.Format "2006.01.02" }}
+    </div>
+    <hr />
+    <div class="article-list_text-block-title">
+      <a href="{{ .RelPermalink }}" class="article-list_text-block-title-link">{{ .Title }}</a>
+    </div>
+  </div>
+</div>

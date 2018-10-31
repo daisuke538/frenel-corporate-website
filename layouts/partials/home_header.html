@@ -1,22 +1,25 @@
 <!DOCTYPE html>
+{{ $baseUrl := trim .Site.BaseURL "/" }}
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}">
   <meta name="description" content="{{ .Site.Params.Description }}">
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ .Site.BaseURL }}" />
-  <meta property="og:image" content="">
+  <meta property="og:url" content="{{ $baseUrl }}" />
+  <meta property="og:image" content="{{ $baseUrl }}/images/frenel-ogp.png">
   <meta property="fb:app_id" content="" />
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@" />
   <meta name="twitter:creator" content="@foo_bar" />
-  <link rel="stylesheet" href="{{ .Site.Params.Stylesheet}}">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/frenel-icon.png">
+  <link rel="stylesheet" href="/{{ .Site.Params.Stylesheet}}">
   <!-- inviewを使うためにjqueryを古いバージョンにしている。-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
   <script src="https://sdk.form.run/js/v2/formrun.js"></script>
 </head>
 <body>

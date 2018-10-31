@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <meta property="og:type" content="website" />
+  {{ $baseUrl := trim .Site.BaseURL "/" }}
+  {{ if .IsPage }}
+  <meta name="description" content="{{ .Title }}｜{{ .Params.position }}｜KADODEは「作品や表現の価値を高め、多くのファンとつないで、末長く愛される作品を残していくこと」を実現していく、福岡を拠点としたクリエイターエージェンシーです。">
+  <meta property="og:title" content="{{ .Site.Title }}｜KADODE｜{{ .Title }}｜{{ .Params.position }}">
+  <meta name="og:description" content="{{ .Title }}｜{{ .Params.position }}｜KADODEは「作品や表現の価値を高め、多くのファンとつないで、末長く愛される作品を残していくこと」を実現していく、福岡を拠点としたクリエイターエージェンシーです。">
+  <meta property="og:url" content="{{ $baseUrl }}{{ .RelPermalink }}" />
+  <meta property="og:image" content="{{ $baseUrl }}{{ .RelPermalink }}{{ .Params.eyecatch }}">
+  {{ else }}
+  <meta name="description" content="KADODEは「作品や表現の価値を高め、多くのファンとつないで、末長く愛される作品を残していくこと」を実現していく、福岡を拠点としたクリエイターエージェンシーです。">
+  <meta property="og:title" content="{{ .Site.Title }}｜{{ .Title }}">
+  <meta name="og:description" content="KADODEは「作品や表現の価値を高め、多くのファンとつないで、末長く愛される作品を残していくこと」を実現していく、福岡を拠点としたクリエイターエージェンシーです。">
+  <meta property="og:url" content="{{ $baseUrl }}/kadode/" />
+  <meta property="og:image" content="{{ $baseUrl }}/images/kadode/kadode_ogp.png">
+  {{ end }}
+  <meta property="fb:app_id" content="" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/frenel-icon.png">
+  <link rel="stylesheet" href="/{{ .Site.Params.Stylesheet}}">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="https://sdk.form.run/js/v2/formrun.js"></script>
+</head>
+<body>
+<header>
+
+</header>

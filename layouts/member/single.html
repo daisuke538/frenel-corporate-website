@@ -1,0 +1,26 @@
+{{ partial "page_header.html" . }}
+
+{{ partial "page_nav.html" . }}
+
+<article class="profile">
+  {{ partial "breadcrumbs" . }}
+  <div class="profile-heading">
+    <h1>{{ .Title }}{{ if .Params.title_en }} / {{ .Params.title_en}}{{ end }}</h1>
+  </div>
+  <img class="profile-eyecatch" src="{{ .Params.eyecatch }}" />
+  <div class="profile-main">
+    <div class="profile-box">
+      <nav class="profile-box_share-button">
+        <ul>
+          <li><a href="http://twitter.com/share?text={{ .Title }}｜{{ .Params.position }}&hashtags=KADODE&url={{ .Permalink }}" target="_blank"><i class="fab fa-twitter profile-box_share-button-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank"><i class="fab fa-facebook-f profile-box_share-button-facebook"></i></a></li>
+        </ul>
+      </nav>
+      <div class="profile-box_content">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+
+{{ partial "footer.html" . }}

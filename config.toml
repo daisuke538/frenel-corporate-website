@@ -1,13 +1,13 @@
 baseURL = "https://frenel.jp/"
 languageCode = "en-us"
 title = "合同会社フレネル（Frenel, LLC.）公式サイト"
+hasCJKLanguage = true
 
 ignoreFiles = [ "\\.scss$"]
 
 [Params]
   stylesheet = "css/style.css"
-  description = "フレネルは、九州アジアを拠点とするクリエイターのエージェント、Webディレクション、地域デザインなどを行う企業です。皆さんのはじまりを、あと押しします。"
-  analytics = ""
+  description = "フレネルは、九州アジアのクリエイターエージェント、Webディレクション、地域デザインなどを行う福岡の企業です。皆さんのはじまりを、あと押しします。"
 
 [Social]
   twitter = ""
@@ -15,6 +15,9 @@ ignoreFiles = [ "\\.scss$"]
 [permalinks]
 
 [taxonomies]
-  tag = "tags"
   category = "categories"
+  tag = "tags"
   archive = "archives"
+
+[blackfriday]
+#  hrefTargetBlank = true

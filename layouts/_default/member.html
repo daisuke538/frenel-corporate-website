@@ -1,6 +1,6 @@
 {{ range .Site.Data.member }}
 <div class="member-box_card">
-  <img src="images/komiya.jpg" class="member-box_card-profile-photo" alt="" />
+  <!--<a href="/member/{{ .url }}">--><img src="images/{{ .image }}" class="member-box_card-profile-photo" alt="" /><!--</a>-->
   <div class="member-box_card-profile-text">
     <div class="member-box_card-profile-name">
       {{ .name }}
@@ -12,12 +12,16 @@
       {{ .position }}
     </div>
     <div class="member-box_card-profile-media">
+      {{ if .media.twitter }}
       <a href="{{ .media.twitter }}" target="_blank" class="member-box_card-profile-media-icon">
         <img src="images/twitter-icon@2x.png" alt="" />
       </a>
+      {{ end }}
+      {{ if .media.facebook }}
       <a href="{{ .media.facebook }}" target="_blank" class="member-box_card-profile-media-icon">
         <img src="images/facebook-icon@2x.png" alt="" />
       </a>
+      {{ end }}
     </div>
   </div>
 </div>

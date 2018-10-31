@@ -4,19 +4,27 @@
 
 <main class="wrapper">
   <div class="hero" id="scroll-top">
-    <img src="" alt="" />
+    <div class="hero-box">
+      <div class="hero-box_logo">
+        <img src="/images/frenel-logo-white.png" alt="Frenelロゴ" />
+      </div>
+      <div class="hero-box_catch-phrase">
+        Web, Creative, Culture
+      </div>
+    </div>
   </div>
 
   <div class="news" id="news">
     <h2 class="display-effect">NEWS</h2>
     <div class="news-box display-effect">
       <section class="article-list">
-      {{ range (.Paginator 5).Pages }}
+      {{ $paginator := .Paginate ( where .Data.Pages "Type" "news" ) 5 }}
+      {{ range $paginator.Pages }}
         {{ .Render "list" }}
       {{ end }}
       </section>
       <div class="article-list_view-all-button">
-        <a href="#" class="article-list_view-all-text">VIEW ALL</a>
+        <a href="/news" class="article-list_view-all-text">VIEW ALL</a>
       </div>
     </div>
   </div>
@@ -26,9 +34,16 @@
     <div class="vision-box display-effect">
       <div class="vision-box_title">はじまりを、あと押しする。</div>
       <div class="vision-box_description">
-        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
-        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
-        ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。ビジョンの詳しい説明を書きます。
+        世界には、小さな光が溢れている。<br />
+        例えば、埋もれているけれど輝きを放つ作品。例えば、知名度はないけれど確かな魅力を持っている地域。<br />
+        <br />
+        社名のフレネルは、「灯台の光を遠くまで届けるために生み出されたレンズ」に由来する。<br />
+        フレネルレンズにより、安全な航海が保証されたことで、各地域が世界貿易に参加できるようになった歴史がある。<br />
+        新時代の到来だ。<br />
+        <br />
+        わたしたちは、多くの小さな光を、より遠くの人たちに届ける灯台の役目を果たす企業でありたい。<br />
+        <br />
+        あなたの大海原への船出を祝い、進む道を長くやさしく照らす。<br />
       </div>
     </div>
   </div>
@@ -38,28 +53,48 @@
     <div class="services-box display-effect">
       <div class="services-box_card">
         <div class="services-box_card-logo">
-          <a href="#"><img src="" /></a>
+          <a href="/kadode"><img src="/images/kadode-logo_black.png" alt="KADODE" /></a>
         </div>
         <div class="plus-sign"></div>
         <div class="services-box_card-description">
+          <div class="services-box_card-service-name">
+            クリエイターエージェント「KADODE」
+          </div>
           <div class="services-box_card-description-text">
-            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。
-            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明
+            九州アジアのクリエイターがより活躍できるよう、エージェントとして多方向でサポートします。
           </div>
         </div>
       </div>
+      <div class="services-box_card">
+        <div class="services-box_card-logo">
+          <a href="https://fukuoka-calling.com" target="_blank"><img class="services-box_card-logo_fukuoka-calling" src="/images/saltwaters_fclogo_copyright.jpg" alt="FUKUOKA CALLING" /></a>
+        </div>
+        <div class="plus-sign"></div>
+        <div class="services-box_card-description">
+          <div class="services-box_card-service-name">
+            Webメディア「FUKUOKA CALLING」
+          </div>
+          <div class="services-box_card-description-text">
+            "ライフスタイル都市 福岡"の魅力をカルチャーコンテンツと絡めて発信するWebメディアです。
+          </div>
+        </div>
+      </div>
+      <!--
       <div class="services-box_card">
         <div class="services-box_card-logo">
           <a href="#"><img src="" /></a>
         </div>
         <div class="plus-sign"></div>
         <div class="services-box_card-description">
+          <div class="services-box_card-service-name">
+            FUKUOKA CALLING
+          </div>
           <div class="services-box_card-description-text">
-            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。
-            事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明が入ります。事業の説明
+            より人に伝わり、企業やユーザーの課題解決につながるWebサイトのディレクションを行います。
           </div>
         </div>
       </div>
+      -->
     </div>
   </div>
 
@@ -71,26 +106,28 @@
         <dt>社名</dt>
         <dd>合同会社フレネル（Frenel, LLC.）</dd>
         <dt>設立日</dt>
-        <dd>2018年3月15日</dd>
+        <dd>2018年3月20日</dd>
         <dt>創業者</dt>
         <dd>池松 拓哉 / 小宮 大輔</dd>
         <dt>代表者</dt>
         <dd>代表CEO 池松 拓哉</dd>
+        <dt>住所</dt>
+        <dd class="company-overview_office-address">〒810-0074 福岡県福岡市中央区大手門3-12-12 BLDG64（ビルヂングロクヨン）402号</dd>
+
         <dt>事業内容</dt>
         <dd class="company-overview_business-contents">
           <div class="company-overview_business-name">クリエイターエージェント</div>
           <div class="company-overview_business-description">クリエイターが世界に羽ばたくためのサポートを行います。</div>
-          <div class="company-overview_business-name">Webディレクション</div>
-          <div class="company-overview_business-description">人に伝わり、事業の成功をサポートするWebサイトのディレクションを行います。</div>
-          <div class="company-overview_business-name">Webコンサルティング</div>
-          <div class="company-overview_business-description">Webサイトの問題調査や原因分析を行い、効果的な改善策を提案いたします。</div>
           <div class="company-overview_business-name">地域デザイン / プランニング</div>
           <div class="company-overview_business-description">地域の魅力と課題の整理を行い、住む人を一番に考えた解決プランを考案いたします。</div>
+          <div class="company-overview_business-name">Webサイト制作</div>
+          <div class="company-overview_business-description">人に伝わり、企業やユーザーの課題解決につながるWebサイト制作を行います。</div>
+          <div class="company-overview_business-name">Webコンサルティング</div>
+          <div class="company-overview_business-description">Webサイトの問題調査や原因分析を行い、効果的な改善策をご提案いたします。また、Webサイトの記事更新や運営等も代行いたします。</div>
+          <div class="company-overview_business-name">その他</div>
+          <div class="company-overview_business-description">事業での困りごと等ありましたら、何なりとご相談ください。</div>
+
         </dd>
-        <!--
-        <dt>所在地</dt>
-        <dd>〒xxx-xxx 福岡県福岡市</dd>
-        -->
       </dl>
     </div>
   </div>

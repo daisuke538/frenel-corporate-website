@@ -1,7 +1,9 @@
 {
   "ikematsu": {
+    "url": "ikematsu",
+    "image": "ikematsu.jpg",
     "name": "池松 拓哉",
-    "name_en": "Ikematsu Takuya",
+    "name_en": "Ikematsu, Takuya",
     "position": "代表CEO",
     "media": {
       "twitter": "",
@@ -9,8 +11,10 @@
     }
   },
   "komiya": {
+    "url": "komiya",
+    "image": "komiya.jpg",
     "name": "小宮 大輔",
-    "name_en": "Komiya Daisuke",
+    "name_en": "Komiya, Daisuke",
     "position": "副代表COO",
     "media": {
       "twitter": "https://twitter.com/daisuke1120",

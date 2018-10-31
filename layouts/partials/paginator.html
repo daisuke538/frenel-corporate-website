@@ -1,0 +1,41 @@
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+<ul class="pagination">
+  <!--
+  {{/*最初へ*/}}
+  {{ with $pag.First }}
+    <li>
+      <a href="{{ .URL }}" aria-label="First"><span aria-hidden="true">FIRST</span></a>
+    </li>
+  {{ end }}
+  -->
+  {{/*前ページ*/}}
+  <li{{ if not $pag.HasPrev }} class="pagination_disabled"{{ end }}>
+    <a href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}" aria-label="Previous">
+      <span aria-hidden="true">PREV</span>
+    </a>
+  </li>
+
+  {{/*番号*/}}
+  {{ range $pag.Pagers }}
+    <li{{ if eq . $pag }} class="pagination_active"{{ end }}>
+      <a href="{{ .URL }}">{{ .PageNumber }}</a>
+    </li>
+  {{ end }}
+
+  {{/*次ページ*/}}
+  <li{{ if not $pag.HasNext }} class="pagination_disabled"{{ end }}>
+    <a href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}" aria-label="Next">
+      <span aria-hidden="true">NEXT</span>
+    </a>
+  </li>
+  <!--
+  {{/*最後へ*/}}
+  {{ with $pag.Last }}
+    <li>
+      <a href="{{ .URL }}" aria-label="Last"><span aria-hidden="true">LAST</span></a>
+    </li>
+  {{ end }}
+  -->
+</ul>
+{{ end }}

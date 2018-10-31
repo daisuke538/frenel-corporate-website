@@ -42,37 +42,6 @@ $( function(){
     return false;
   } );
 
-  ////////////////////////////////
-  // 各ページを移動+フェードイン表示 //
-  ////////////////////////////////
-  $( window ).on( 'load',function(){
-    $( window ).scroll( function(){
-      $( '.display-effect' ).each( function(){
-        var POS = $( this ).offset().top;
-        var scroll = $( window ).scrollTop();
-        var windowHeight = $( window ).height();
-
-        if( scroll > POS - windowHeight ){
-          $( this ).css( {
-            'opacity':'1',
-            'transform':'translateY( 0 )',
-            '-webkit-transform':'translateY( 0 )',
-            '-moz-transform':'translateY( 0 )',
-            '-ms-transform':'translateY( 0 )'
-          });
-        } else{
-          $( this ).css( {
-            'opacity':'0',
-            'transform':'translateY( 70px )',
-            '-webkit-transform':'translateY( 70px) ',
-            '-moz-transform':'translateY( 70px )',
-            '-ms-transform':'translateY( 70px )'
-          } );
-        }
-      } );
-    } );
-  } );
-
   /////////////////////////////////////////////////
   // スクロールトップボタンのフェードイン/フェードアウト //
   /////////////////////////////////////////////////
@@ -91,7 +60,7 @@ $( function(){
   });
   // 「ページトップへ戻るボタン」をクリックした場合のページトップへ戻るスピードの速さが記されています
   $( '.scroll-top' ).click( function(){
-    $( 'html,body' ).animate( { scrollTop: 0 }, 500 );
+    $( 'html, body' ).animate( { scrollTop: 0 }, 500 );
     return false;
   } );
 
@@ -106,4 +75,36 @@ $( function(){
     return false;
   } );
 
+} );
+
+// jQuery3.x系では、loadを利用するとき $( function(){} の外に出す。
+////////////////////////////////
+// 各ページを移動+フェードイン表示 //
+////////////////////////////////
+$( window ).on( 'load', function(){
+  $( window ).scroll( function(){
+    $( '.display-effect' ).each( function(){
+      var POS = $( this ).offset().top;
+      var scroll = $( window ).scrollTop();
+      var windowHeight = $( window ).height();
+
+      if( scroll > POS - windowHeight ){
+        $( this ).css( {
+          'opacity':'1',
+          'transform':'translateY( 0 )',
+          '-webkit-transform':'translateY( 0 )',
+          '-moz-transform':'translateY( 0 )',
+          '-ms-transform':'translateY( 0 )'
+        });
+      } else{
+        $( this ).css( {
+          'opacity':'0',
+          'transform':'translateY( 70px )',
+          '-webkit-transform':'translateY( 70px) ',
+          '-moz-transform':'translateY( 70px )',
+          '-ms-transform':'translateY( 70px )'
+        } );
+      }
+    } );
+  } );
 } );

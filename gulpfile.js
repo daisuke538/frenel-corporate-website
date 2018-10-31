@@ -104,8 +104,8 @@ gulp.task( 'imagemin', function(){
 // サムネイル（アイキャッチ）画像生成 //
 //////////////////////////////////
 gulp.task( 'image-resize', function() {
-  var srcThumbGlobs = glob.sync( 'content/posts/**/images/thumbnail/' );
-  var srcEyeGlobs   = glob.sync( 'content/posts/**/images/eyecatch/' );
+  var srcThumbGlobs = glob.sync( 'content/news/**/images/thumbnail/' );
+  var srcEyeGlobs   = glob.sync( 'content/news/**/images/eyecatch/' );
   var srcDir        = 'origin';
   var targetFile    = '/*.+(jpg|jpeg|png|gif)';
 
@@ -122,7 +122,7 @@ gulp.task( 'image-resize', function() {
   var eyeResizeOptions = {
     // 記事のアイキャッチ画像サイズを設定
     width       : 1800,
-    height      : 900,
+    height      : 600,
     gravity     : 'Center',
     crop        : true,
     upscale     : false,
@@ -168,9 +168,9 @@ gulp.task( 'image-resize', function() {
 // 監視フォルダ //
 ////////////////
 gulp.task( 'watch', function(){
-  gulp.watch( 'static/images/origin/*', ['imagemin'] );
-  gulp.watch( 'content/posts/**/images/thumbnail/origin/*', ['image-resize'] );
-  gulp.watch( 'content/posts/**/images/eyecatch/origin/*', ['image-resize'] );
+  //gulp.watch( 'static/images/origin/*', ['imagemin'] );
+  //gulp.watch( 'content/posts/**/images/thumbnail/origin/*', ['image-resize'] );
+  //gulp.watch( 'content/posts/**/images/eyecatch/origin/*', ['image-resize'] );
   gulp.watch( 'static/scss/*.scss', ['sass'] ); // Sassファイルに変更があると起動
   // gulp.watch( 'static/images/**/*.+(jpg|jpeg|png|gif|svg)', ['imagemin'] ); // 画像に変更があると起動
 });

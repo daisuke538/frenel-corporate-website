@@ -1,0 +1,40 @@
+{{ partial "page_header.html" . }}
+
+{{ partial "page_nav.html" . }}
+
+<article>
+  {{ partial "breadcrumbs" . }}
+  <div class="article-heading">
+    <h1>{{ .Title }}</h1>
+  </div>
+  <img class="article-eyecatch" src="{{ .Params.eyecatch }}" />
+  <div class="article-main">
+    <div class="article-box">
+      <div class="article-box-top">
+        <div class="article-box-top_date">
+          {{ .Date.Format "2006.01.02" }}
+        </div>
+        <div class="article-box-top_category">
+          {{ with .Params.categories }}{{ range . }}<!--<a href="/categories/{{ . }}/">-->{{ . }}<!--</a>-->{{ end }}{{ end }}
+        </div>
+      </div>
+      <!--
+      <div class="article-box_tags">
+        {{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . }}/">#{{ . }}</a>{{ end }}{{ end }}
+      </div>
+      -->
+      <nav class="article-box_share-button">
+        <ul>
+          <li><a href="http://twitter.com/share?text={{ .Title }}&hashtags=フレネルのニュース&url={{ .Permalink }}" target="_blank"><i class="fab fa-twitter article-box_share-button-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank"><i class="fab fa-facebook-f article-box_share-button-facebook"></i></a></li>
+        </ul>
+      </nav>
+      <hr />
+      <div class="article-box_content">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+
+{{ partial "footer.html" . }}

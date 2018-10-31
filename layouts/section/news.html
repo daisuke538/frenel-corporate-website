@@ -1,0 +1,33 @@
+{{ partial "page_header.html" . }}
+
+{{ partial "page_nav.html" . }}
+
+<!-- News Page Template -->
+<section class="page-wrapper">
+  {{ partial "breadcrumbs" . }}
+  <div class="page-heading">
+    <h1>NEWS</h1>
+  </div>
+  <div class="page-main">
+    <div class="news-box">
+      <div class="news-article-list">
+      {{ $paginator := .Paginate ( where .Data.Pages "Type" "news" ) 10 }}
+      {{ range $paginator.Pages }}
+        <!-- layouts/news/summary.htmlを呼び出す -->
+        {{ .Render "summary" }}
+      {{ end }}
+      </div>
+      {{ partial "paginator.html" . }}
+      <!--
+      <div class="news-article-list_load-more-button">
+        <a href="#" class="news-article-list_load-more-text" id="load-more">LOAD MORE</a>
+      </div>
+      -->
+      <div>
+        <!--{{ .Content }}-->
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "footer.html" . }}

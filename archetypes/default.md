@@ -7,5 +7,6 @@ categories: [""]
 tags: ["",""]
 thumbnail: "images/thumbnail/thumbnail.jpg"
 eyecatch: "images/eyecatch/eyecatch.jpg"
+isCJKLanguage: true
 draft: false
 ---

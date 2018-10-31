@@ -79,7 +79,7 @@ $ hugo server -w
 $ gulp hugo-build
 ```
 
-- `public`フォルダが生成されるので、その中身をFTPツールを使い、公開用サーバーへアップロードする。
+- `public`フォルダが生成されるので、その中身をFTPツールを使い、公開用サーバーへアップロードする。アップロード先は、`frenel` -> `frenel.jp` -> `public_html`
 
 
 

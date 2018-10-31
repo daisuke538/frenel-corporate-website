@@ -12,14 +12,20 @@ cd ~/
 ```
 
 - Githubからリポジトリをローカルにクローン（複製）する。ホームディレクトリで以下のコマンドを実行する。
-`git clone https://github.com/frenel-llc/frenel-corporate-website.git`
+```sh
+git clone https://github.com/frenel-llc/frenel-corporate-website.git
+```
 
 - 以下のコマンドを実行して、上の操作で作成されたディレクトリ（frenel-corporate-website）へ移動する。
-　cd frenel-corporate-website
+```sh
+cd frenel-corporate-website
+```
 
-・以下のコマンドを実行して、Hugoをインストールする。
-　brew update
-　brew install hugo
+- 以下のコマンドを実行して、Hugoをインストールする。
+```sh
+brew update
+brew install hugo
+```
 
 
 
